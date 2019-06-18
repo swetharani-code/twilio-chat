@@ -4,7 +4,7 @@ var TokenProvider = require('./lib/tokenprovider');
 
 var app = new express();
 var tokenProvider = new TokenProvider(credentials);
-
+const port = process.env.PORT || 8080;
 if (credentials.authToken) {
   console.warn('WARNING: The "authToken" field is deprecated. Please use "signingKeySecret".');
 }
@@ -25,4 +25,4 @@ app.get('/getToken', function(req, res) {
 
 app.use(express.static(__dirname + '/public'));
 
-app.listen(8080);
+app.listen(port);
